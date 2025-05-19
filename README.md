@@ -46,10 +46,6 @@ sh semantic-versioning_merge-strategy.sh  <version> <date> <branch> [--verbose]
 - **Minor Bump**: Commit starts with "feat:"
 - **Patch Bump**: Commit starts with "fix:" or "perf:"
 
-### Dependencies
-- `gh` (GitHub CLI)
-- `jq` (JSON processor)
-
 ### Example
 ```bash
 sh semantic-versioning_merge-strategy.sh 1.0.0 2024-01-01 main --verbose
@@ -66,10 +62,6 @@ A bash script that automatically generates release notes by fetching and documen
 - Supports custom branch and date range
 - Validates required CLI tools (gh, jq)
 
-### Prerequisites
-- GitHub CLI (`gh`)
-- `jq` JSON processor
-
 ### Usage
 ```bash 
 sh ./generate-release-notes_merge-strategy.sh [target_branch] [merged_since_date]
@@ -81,8 +73,6 @@ sh ./generate-release-notes_merge-strategy.sh [target_branch] [merged_since_date
 
 ### Example Commands
 ```bash
-# Generate release notes for main branch since yesterday
-./generate-release-notes_merge-strategy.sh
 # Generate release notes for develop branch since specific date
 ./generate-release-notes_merge-strategy.sh develop 2024-01-01
 ``` 
@@ -90,12 +80,6 @@ sh ./generate-release-notes_merge-strategy.sh [target_branch] [merged_since_date
 ### Output Files
 - `merged_prs.txt`: List of merged pull requests
 - `RELEASE_NOTES.md`: Markdown-formatted release notes
-
-### Requirements
-- Bash
-- GitHub CLI authenticated and configured
-- `jq` installed
-
 
 # Cherry-Pick Strategy Script
 ## Semantic Versioning
@@ -124,9 +108,6 @@ sh semantic-versioning_cherry-pick-strategy.sh  <version> <base> <branch> [--ver
 - Color-coded verbose logging
 - Supports various commit message formats
 
-### Dependencies
-- `git` (Git version control system)
-
 ### Verbose Mode
 When `--verbose` is used, the script provides:
 - List of cherry-picked commits
@@ -137,13 +118,6 @@ When `--verbose` is used, the script provides:
 ```bash
 sh semantic-versioning_cherry-pick-strategy.sh 1.0.0 main develop --verbose
 ```
-
-### Color Coding in Verbose Mode
-- 🔴 Red: Major version changes, Breaking Changes
-- 🟡 Yellow: Minor version changes, Feature commits
-- 🟢 Green: Patch version changes, Fix/Performance commits
-- 🔵 Blue: Commit processing information
-
 
 # Cherry-Pick Release Notes Generator
 
@@ -167,8 +141,6 @@ sh ./generate-release-notes_cherry-pick-strategy.sh [target_branch] [current_bra
 
 ## Example Commands
 ```bash
-# Generate release notes comparing main with current branch
-./generate-release-notes_cherry-pick-strategy.sh
 # Generate release notes for specific branches
 ./generate-release-notes_cherry-pick-strategy.sh main develop
 ``` 
@@ -212,7 +184,6 @@ sh ./format-release-notes.sh "<base64_encoded_pr_list>"
 ```bash
 # Encode your PR list
 base64_pr_list=$(echo "My PR list" | base64)
-
 # Format release notes
 ./format-release-notes.sh "$base64_pr_list"
 ```
@@ -260,23 +231,6 @@ sh react-native-update-app-version.sh <new_version>
 # Update to version 2.0.0
 sh react-native-update-app-version.sh 2.0.0
 ``` 
-
-## Versioning Behavior
-- If version is same as current:
-  - Increment only build number
-- If version is different:
-  - Update full version
-  - Reset build number to 1
-
-## Requirements
-- Bash
-- `jq` (JSON processor)
-- Xcode Command Line Tools
-- React Native project structure
-
-## Limitations
-- Assumes specific project structure
-- Requires manual execution
 
 ## Quick Navigation 🧭
 
